@@ -1,18 +1,17 @@
-//import css from './ContactList.module.css';
+import css from './ContactList.module.css';
 //import { useState } from 'react';
-import Contact from "../Contact/Contact"
+import Contact from '../Contact/Contact';
 
+const ContactList = ({ contacts, deleteUser }) => {
+  return (
+    <div>
+      <ul className={css.contact}>
+        {contacts.map(({ id, name, number }) => (
+          <Contact key={id} name={name} number={number} deleteUser={() => deleteUser(id)} />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-const ContactList = ({contacts, deleteUser}) => {
-    return (
-        <div>
-            <ul>{contacts.map(({ id, name, number }) =>(
-                <Contact key={id} name={name} number={number} deleteUser={()=>deleteUser(id)} />
-       ) )}
-            
-            </ul>
-            </div>
-  )  
-}
-
-export default ContactList
+export default ContactList;
